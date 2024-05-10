@@ -1,8 +1,12 @@
-import express from 'express';
-import { MongoSource } from 'data-source';
 import { userRouter } from 'controllers/index';
+import { MongoSource, UserDataSource } from 'data-source';
+import express from 'express';
 
 MongoSource.initialize();
+
+const a = '1';
+
+console.log(UserDataSource);
 
 console.log(process.env.MONGO_DB_URL);
 

@@ -1,5 +1,5 @@
-import { Entity, ObjectId, ObjectIdColumn, Column } from 'typeorm';
 import { UserRole } from 'entities';
+import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class UserModel {
