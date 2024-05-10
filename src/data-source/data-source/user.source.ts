@@ -1,12 +1,12 @@
 import { UserModel } from '../models';
 import { MongoSource } from '../source';
 import { Repository, ObjectId } from 'typeorm';
-import { IUserRepository } from '../interfaces/user';
+import { IUserDataSource } from 'interfaces';
 
 const userRepository = MongoSource.getRepository(UserModel);
 
-export class UserRepository implements IUserRepository {
-  userRepository: Repository<UserModel>;
+export class UserDataSource implements IUserDataSource {
+  private userRepository: Repository<UserModel>;
   constructor() {
     this.userRepository = MongoSource.getRepository(UserModel);
   }

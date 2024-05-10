@@ -1,3 +1,2 @@
 export { MongoSource } from './source';
-export * from './repositories';
-export * from './interfaces';
+export * from './data-source';

@@ -1,4 +1,4 @@
 import { User } from 'entities';
-export interface IUserRepository {
+export interface IUserService {
   findUser(id: string): Promise<User | null>;
 }
