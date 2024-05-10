@@ -1,0 +1,7 @@
+{
+  "eslint.useESLintClass": true,
+  "eslint.validate": [],
+  "prettier.eslintIntegration": true,
+  "eslint.experimental.useFlatConfig": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
