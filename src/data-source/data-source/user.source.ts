@@ -1,4 +1,5 @@
-import { IUserDataSource } from 'interfaces';
+import { User } from 'entities';
+import { IRawUser, IUserDataSource } from 'interfaces';
 import { ObjectId, Repository } from 'typeorm';
 
 import { UserModel } from '../models';
@@ -13,7 +14,8 @@ export class UserDataSource implements IUserDataSource {
     this.userRepository = MongoSource.getRepository(UserModel);
   }
 
-  findUser(id: string) {
-    return userRepository.findOneBy({ _id: new ObjectId(id) });
+  async findOneById(id: string) {
+    const data: IRawUser = await userRepository.findOneBy({ _id: new ObjectId(id) });
+    return data && User.toDomain(data);
   }
 }

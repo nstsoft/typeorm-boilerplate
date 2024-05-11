@@ -3,13 +3,13 @@ import { IUserDataSource, IUserService } from 'interfaces';
 import { UserDataSource } from '../data-source';
 
 export class UserService implements IUserService {
-  private userRepository: IUserDataSource;
+  private userDataSource: IUserDataSource;
 
   constructor() {
-    this.userRepository = new UserDataSource();
+    this.userDataSource = new UserDataSource();
   }
 
   findUser(id: string) {
-    return this.userRepository.findUser(id);
+    return this.userDataSource.findOneById(id);
   }
 }

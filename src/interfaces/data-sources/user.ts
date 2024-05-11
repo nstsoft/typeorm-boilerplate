@@ -1,4 +1,5 @@
 import { User } from 'entities';
-export interface IUserDataSource {
-  findUser(id: string): Promise<User | null>;
-}
+
+import { IDataSource } from './common';
+
+export interface IUserDataSource extends IDataSource<User> {}
