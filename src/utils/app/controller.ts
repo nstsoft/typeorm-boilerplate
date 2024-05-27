@@ -21,7 +21,7 @@ export function BaseMethood(route: string, method: string, middlewares?: RouteMi
         const result = await originalMethod.call(this, req, res, next);
         return res.json(result);
       } catch (error) {
-        next(error);
+        return next(error);
       }
     };
   };
@@ -59,18 +59,19 @@ export abstract class BaseController {
         const { route, method, routeMiddlewares } = routeData;
         const handler = this[methodName].bind(this);
 
-        const methods = controllerMiddlewares
-          .concat(routeMiddlewares)
-          .map((middleware) => async (req: Request, res: Response, next: NextFunction) => {
+        const methods = controllerMiddlewares.map(
+          (middleware) => async (req: Request, res: Response, next: NextFunction) => {
             try {
               await middleware(req, res, next);
-              next();
-            } catch (error) {
-              next(error);
-            }
-          });
 
-        this.router[method](`${routePrefix}${route}`, ...methods, handler);
+              return next();
+            } catch (error) {
+              return next(error);
+            }
+          },
+        );
+
+        this.router[method](`${routePrefix}${route}`, ...methods, ...routeMiddlewares, handler);
       }
     });
   }
