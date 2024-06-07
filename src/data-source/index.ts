@@ -1,2 +1,2 @@
-export { MongoSource } from './source';
 export * from './data-source';
+export { MongoSource } from './source';

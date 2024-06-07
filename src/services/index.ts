@@ -1,5 +1,4 @@
-import { UserService } from './user';
-
-const userService = new UserService();
-
-export { userService };
+export * from './event';
+export * from './image';
+export * from './menu';
+export * from './user';

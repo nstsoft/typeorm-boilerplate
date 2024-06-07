@@ -5,13 +5,13 @@ export enum UserRole {
   USER = 'USER',
 }
 
-export interface IRawUser {
+export interface IUserData {
+  name: string;
   email: string;
   password: string;
   role: UserRole;
-  _id: ObjectId;
 }
 
-export interface IUser extends IRawUser {
-  toRaw(): IRawUser;
+export interface IRawUser extends IUserData {
+  _id?: ObjectId;
 }

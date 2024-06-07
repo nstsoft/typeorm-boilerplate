@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+
 import { UserModel } from './models';
 
 const url = process.env.MONGO_DB_URL.replace('{user}', process.env.DB_USERNAME)
